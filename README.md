@@ -163,21 +163,9 @@ rand = "0.3"
 
 We can also depend on a library located in a `git` repository. Your package can depend on any specified version or commit. 
 
-```
-[dependencies]
-piston_window = { version = "0.120.0", git = "https://github.com/PistonDevelopers/piston" }
-rand = { git = "https://github.com/example/rand", rev = "9f35b8e" }
-```
+*Git and path example*
 
-Or a local directory. 
-
-```
-[dependencies]
-piston_window = { version = "0.120.0", path = "~/github/piston" }
-```
-
-
-To use these crates we must first load them like in `main.rs`.
+To use these crates in the snake game, we must first load them like in `main.rs`.
 
 ```
 extern crate piston_window;
