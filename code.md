@@ -1,7 +1,7 @@
 ## Building
 ### Build script 1
 
-```
+```rust
 use std::env;
 use std::fs;
 use std::path::Path;
@@ -22,7 +22,7 @@ fn main() {
 
 Create rectangle
 
-```
+```rust
 pub fn create_rectangle() {
         crate::shapes::rectangles::Rect {
                 width: 5,
@@ -34,22 +34,22 @@ pub fn create_rectangle() {
 
 Another line
 
-```
+```rust
 shapes::new_rect(5, 5);
 ```
 
 Another file
 
-```
+```rust
 mod temp;
 ```
 
-```
+```rust
 use temp::shapes::*;
 ```
 
 
-```
+```rust
 [dependencies]
 piston_window = { version = "0.120.0", git = "https://github.com/PistonDevelopers/piston" }
 rand = { git = "https://github.com/example/rand", rev = "9f35b8e" }
@@ -57,14 +57,14 @@ rand = { git = "https://github.com/example/rand", rev = "9f35b8e" }
 
 Or a local directory.
 
-```
+```rust
 [dependencies]
 piston_window = { version = "0.120.0", path = "~/github/piston" }
 ```
 
 ## Tests
 in `tests/integration_test.rs`
-```
+```rust
 #[test]
 pub fn test1() {
     assert_eq!(1, 1);
