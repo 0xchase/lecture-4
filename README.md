@@ -25,6 +25,9 @@ Important cargo commands:
  - clippy: Collection of checks for common mistakes in Rust code
  - clean: Clean directories
  - test: Run integration or unit tests
+ 
+ 
+ We can also compile individual files with `rustc`. This is analogous to `gcc`. 
 
 ### Build scripts
 
