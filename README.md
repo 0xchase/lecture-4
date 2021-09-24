@@ -43,16 +43,7 @@ These may be used in cases where you need to
  - Perform platform-specific configuration for the crate
  - Generate bindings to some other langauge
 
-
-```rust
-fn main() {
-    println!("cargo:rerun-if-changed=src/hello.c");
-    
-    cc::Build::new()
-        .file("src/hello.c")
-        .compile("hello");
-}
-```
+*Show build-script-0*
 
 Dependencies must be added to your Cargo.toml under build-dependecies.
 
@@ -71,11 +62,12 @@ Here are the most important instructions recognized by cargo.
  - cargo:warning=MESSAGE — Displays a warning on the terminal.
  - cargo:KEY=VALUE — Metadata, used by links scripts.
 
-These are the build scripts outputs. Inputs to the build scripts are environment variables. Here is an example that uses them.
+These are the build scripts outputs. Inputs to the build scripts are environment variables. We will construct an example that uses them. 
 
 *Build script 1 example*
 
 ## Modules and Crates
+
 As you write large programs, organizing your code will be important because keeping track of your entire program in your head will become impossible. By grouping related functionality and separating code with distinct features, you’ll clarify where to find code that implements a particular feature and where to go to change how a feature works.
 
 The programs we’ve written so far have been in one module in one file. As a project grows, you can organize code by splitting it into multiple modules and then multiple files. A package can contain multiple binary crates and optionally one library crate.
@@ -91,17 +83,9 @@ Rust has a number of features that allow you to manage your code’s organizatio
 
 Modules let us organize code within a crate into groups for readability and easy reuse. Modules also control the privacy of items, which is whether an item can be used by outside code (public) or is an internal implementation detail and not available for outside use (private).
 
-```
-cargo new --lib shapes
-```
+*Open tree.rs*
 
-We can define a module using the `mod` keyword followed by the name of the module. 
-
-in `src/lib.rs`
-
-*Tree.rs example*
-
-Modules allow us to group related definitions together. 
+We can define a module using the `mod` keyword followed by the name of the module, as seen here. This allows us to group related definitions together. 
 
 ### Module tree
 
@@ -110,15 +94,15 @@ Using `mod` we can build a tree of definitions, which is often called the module
  - An absolute path starts from a crate root by using a crate name or a literal crate.
  - A relative path starts from the current module and uses self, super, or an identifier in the current module.
 
-For example, from the previous `lib.rs` we could reference `Rect` with
+To show an example of this...
 
-*Tree2.rs example*
+*Add create_rectangle*
 
-To make this example compile, each nested module and function must be marked as `pub`. 
+However, this example won't compile as is. Remember, that rust keeps definitions private unless they are specifically marked as public, so each nested module and function must be marked as `pub`. 
 
 We can also construct relative paths using the `super` or `self` keywords. Here's an example of the former.
 
-*Tree3.rs example*
+*Add relative reference*
 
 #### Using pub with structs and enums
 
@@ -126,11 +110,15 @@ We can also use pub to designate structs and enums as public, but there are a fe
 
 Enums, on the other hand, have all their variants public if the enum itself is prefaced with `pub`.
 
-### The use keyword
+### Modules in other files
 
-Using a semicolan after the `mod temp` rather than a block tells rust to load the contents of the module from another file with the same name as the module. We can then bring specific definitions into scope with the `use` keyword. 
+Using a semicolan after the `mod temp` rather than a block in braces tells rust to load the contents of the module from another file with the same name as the module. We can then bring specific definitions into scope with the `use` keyword. 
 
-*use_example crate*
+*cd into use_example crate*
+
+If we build this crate, we can see that the ovals module is undeclared. We can load it from temp.rs using the method described above.
+
+Then we must bring the definitions into scope with the `use` keyword.
 
 ### Using crates
 
